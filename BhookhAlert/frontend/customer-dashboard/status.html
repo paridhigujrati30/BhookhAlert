@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Status - BhookhAlert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/customer.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../../index.html">BhookhAlert</a>
+            </div>
+            <div class="nav-links">
+                <a href="../../restaurant-selection/selectRestaurant.html" class="nav-link">Restaurants</a>
+                <a href="status.html" class="nav-link active">Queue</a>
+                <a href="#" class="nav-link" onclick="alert('Profile coming soon!'); return false;">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero-section">
+            <h1>Your Queue Status</h1>
+            <p class="subtitle">Real-time updates on your position</p>
+        </section>
+
+        <section class="status-section">
+            <div class="status-card">
+                <div class="status-header">
+                    <div class="status-badge">
+                        <span class="status-label">Position</span>
+                        <span id="positionDisplay" class="status-value">-</span>
+                    </div>
+                    <div class="status-badge">
+                        <span class="status-label">Wait Time</span>
+                        <span id="waitTimeDisplay" class="status-value">-</span>
+                        <span class="status-unit">min</span>
+                    </div>
+                </div>
+
+                <div class="status-message" id="statusMessage">
+                    Loading your position...
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>Estimated wait time</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="queue-section">
+            <div class="queue-visualization-card">
+                <h2>Live Queue</h2>
+                <div id="queueVisualization" class="queue-visualization">
+                    <!-- Queue items will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="discount-section">
+            <div class="discount-banner" id="discountBanner" style="display: none;">
+                <div class="discount-content">
+                    <div class="discount-text">
+                        <h3>Special Offer!</h3>
+                        <p>Get 15% off your meal for waiting!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="actions-section">
+            <div class="action-buttons">
+                <button onclick="window.location.href='customer.html'" class="btn-secondary">Join Another Queue</button>
+                <button onclick="window.location.href='../restaurant-selection/selectRestaurant.html'" class="btn-outline">Change Restaurant</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="notifications"></div>
+
+    <script src="js/joinQueue.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/queueStatus.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - BhookhAlert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/staff.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../../index.html">BhookhAlert</a>
+            </div>
+            <div class="nav-links">
+                <a href="../../restaurant-selection/selectRestaurant.html" class="nav-link">Restaurants</a>
+                <a href="../../customer-dashboard/status.html" class="nav-link">Queue</a>
+                <a href="#" class="nav-link" onclick="alert('Profile coming soon!'); return false;">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero-section">
+            <!-- ADD YOUR HERO BACKGROUND IMAGE in staff.css .hero-section -->
+            <h1>Staff Dashboard</h1>
+            <p class="subtitle">Manage your restaurant queue</p>
+        </header>
+
+        <nav class="dashboard-nav">
+            <a href="staff.html" class="nav-link active">Queue Management</a>
+            <a href="analytics.html" class="nav-link">Analytics</a>
+        </nav>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-label">Total in Queue</div>
+                <div class="stat-value" id="totalQueueCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">VIP Customers</div>
+                <div class="stat-value" id="vipCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Regular Customers</div>
+                <div class="stat-value" id="regularCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Avg Wait Time</div>
+                <div class="stat-value" id="avgWaitTime">0 min</div>
+            </div>
+        </div>
+
+        <div class="queue-management-card">
+            <div class="card-header">
+                <h2>Live Queue</h2>
+                <button id="refreshQueue" class="btn-icon" title="Refresh Queue">↻</button>
+            </div>
+
+            <div id="queueList" class="queue-list">
+                <!-- Queue items will be dynamically loaded here -->
+            </div>
+
+            <div class="queue-actions">
+                <button id="seatNextBtn" class="btn-primary">Seat Next Customer</button>
+                <button id="markNoShowBtn" class="btn-secondary">Mark No-Show</button>
+            </div>
+        </div>
+
+        <div class="priority-override-card">
+            <div class="card-header">
+                <h2>Priority Override</h2>
+            </div>
+            <form id="priorityOverrideForm" class="override-form">
+                <div class="form-group">
+                    <label for="customerSelect">Select Customer</label>
+                    <select id="customerSelect" name="customerSelect" required>
+                        <option value="">Select a customer</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Apply VIP Priority</button>
+            </form>
+        </div>
+
+        <div class="reservation-monitor-card">
+            <div class="card-header">
+                <h2>Reservation Monitor</h2>
+            </div>
+            <div id="reservationList" class="reservation-list">
+                <!-- Reservations will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="notifications"></div>
+
+    <script src="../customer-dashboard/js/joinQueue.js"></script>
+    <script src="../customer-dashboard/js/socket.js"></script>
+    <script src="../customer-dashboard/js/reservationCheckin.js"></script>
+    <script src="js/manageQueue.js"></script>
+    <script src="js/seatCustomer.js"></script>
+    <script src="js/priorityOverride.js"></script>
+    <script src="js/reservationMonitor.js"></script>
+</body>
+</html>
+

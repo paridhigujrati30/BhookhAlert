@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BhookhAlert - Smart Restaurant Queue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://i.pinimg.com/1200x/21/8e/3e/218e3e3605e67516331496f93d9ea51a.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #f5e6d3 0%, #f0d4b0 100%);
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .navbar {
+            background-color: rgba(129, 124, 124, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 18px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            transition: color 0.3s ease;
+        }
+
+        .nav-brand a:hover {
+            color: rgba(228, 156, 40, 1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 8px;
+        }
+
+        .nav-link:hover {
+            color: rgba(228, 156, 40, 1);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link.active {
+            color: rgba(228, 156, 40, 1);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .main-content {
+            min-height: calc(100vh - 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* Background image for main content area */
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Background overlay for main content */
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 0;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section {
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #fffffd;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(228, 156, 40, 0.8);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #f9f9f9;
+            margin-bottom: 50px;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .option-card {
+            background-color:rgba(129, 124, 124, 0.73);
+            border-radius: 15px;
+            padding: 50px 40px;
+            box-shadow: 0 4px 15px rgba(200, 90, 26, 0.15);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 2px solid transparent;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .option-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(200, 90, 26, 0.25);
+            border-color: #c85a1a;
+        }
+
+        .option-title {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .option-description {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        @media (min-width: 768px) {
+            .options {
+                flex-direction: row;
+            }
+            
+            .option-card {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">BhookhAlert</a>
+            </div>
+            <div class="nav-links">
+                <a href="restaurant-selection/selectRestaurant.html" class="nav-link">Restaurants</a>
+                <a href="customer-dashboard/status.html" class="nav-link">Queue</a>
+                <a href="#" class="nav-link" onclick="alert('Profile coming soon!'); return false;">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="hero-section">
+                <h1>BhookhAlert</h1>
+                <p class="subtitle">Smart Restaurant Virtual Queue</p>
+            </div>
+            
+            <div class="options">
+                <a href="restaurant-selection/selectRestaurant.html" class="option-card">
+                    <div class="option-title">Customer</div>
+                    <div class="option-description">Join the queue or check in for your reservation</div>
+                </a>
+                
+                <a href="staff-dashboard/staff.html" class="option-card">
+                    <div class="option-title">Staff</div>
+                    <div class="option-description">Manage queue and view analytics</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
